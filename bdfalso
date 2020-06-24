@@ -1,0 +1,26 @@
+// criando banco de dados falso
+let bd = {
+    games: [
+        {
+            id: 23, 
+            title: "Call of duty MW",
+            yaer: 2019,
+            price: 60
+        },
+
+        {
+            id: 65, 
+            title: "Sea of thieves",
+            yaer: 2018,
+            price: 40
+        },
+
+        {
+            id: 2, 
+            title: "Minecraf",
+            yaer: 2012,
+            price: 20
+        }
+
+    ]
+}
