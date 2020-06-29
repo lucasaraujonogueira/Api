@@ -74,7 +74,7 @@ app.post("/games", (req, res) => {
 })
 
 // rota de cadastro de registro único
-app.get('/games/:id', (req, res) => {
+app.get('/game/:id', (req, res) => {
     // VOU PASSAR O ID QUE EU QUERO E ELE VAI TRAZER OS DADOS NO GAME 
          // lógica de pegar o game no banco de dados
      //  let id = req.params.id;
@@ -95,6 +95,7 @@ app.get('/games/:id', (req, res) => {
         if (game != undefined) {
             res.statusCode = 200;
             res.json(game);
+            console.log('Elemento foi cadastrado');
         } else {
             res.sendStatus(404);
         }
@@ -104,7 +105,7 @@ app.get('/games/:id', (req, res) => {
 
 // Criando endpoint para deleção de games, ele só é acessível por bibliotecas com axios e ajax 
    // Deletando coisas na api rest
-app.delete('/games/:id', (req, res) => {
+app.delete('/game/:id', (req, res) => {
     // Usando a validação 
        // Verificar se de fato o dado colocado é um numero
     if (isNaN(req.params.id)) { // Aqui é o ID não é um numero
@@ -120,7 +121,8 @@ app.delete('/games/:id', (req, res) => {
             // Se o elemento for igual a -1, ele é inválido
         if (index == -1) {
                // O elemento não existe 
-               res.statusCode(404) 
+              res.sendStatus(404) 
+           
         }
         else {
             // Deletando o elemento
