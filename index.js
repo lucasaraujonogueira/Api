@@ -35,6 +35,20 @@ let bd = {
             price: 20
         }
 
+    ],
+    users: [
+        {
+            id: 10,
+            nome: "Lucas Alves",
+            email: "lucastestando123@gmail.com",
+            password:"testandonovamente"
+        },
+        {
+            id: 14,
+            nome: "Joseph da Silva",
+            email: "josephdasilva@gmail.com",
+            password:"joseph123"
+        }
     ]
 }
 
@@ -182,6 +196,37 @@ app.put('/games/:id', (req, res) => {
     }
     
 
+})
+
+
+// Endpoint para login
+app.post('/auth', (req, res) => {
+    // Pegando os dados do login email e senha
+    let { email, password } = req.body;
+    // validando
+    if (email != undefined) {
+        // Usuário que tenha o e-mail igual o e-mail que passei na req 
+        var user = bd.users.find(u => u.email == email);
+        
+        // Achando o usuário no bd 
+        if (user != undefined) {
+                // Verificar se a senha está correta
+            if (user.password == password) {
+                res.status = 200;
+                res.json({token: "TOKEN FALSO"})
+            }
+            else {
+                res.status = 401;
+            }
+        }
+        else {
+            res.status = 404;
+        }
+    }
+    else {
+        res.status = 400;
+        res.json({ err: "e-mail é inválido" });
+    }
 })
 
 

@@ -1,7 +1,6 @@
 {
   "name": "api",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -18,5 +17,15 @@
     "mysql2": "^2.1.0",
     "nodemon": "^2.0.4",
     "sequelize": "^5.21.13"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasaraujonogueira/Api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lucasaraujonogueira/Api/issues"
+  },
+  "homepage": "https://github.com/lucasaraujonogueira/Api#readme",
+  "description": ""
 }

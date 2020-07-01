@@ -64,6 +64,7 @@
             }
 
 
+
             // CRIANDO FUNCAO PARA DELETAR O GAME
                 function deleteGame(listItem){
                     // Pegando id do item
@@ -123,6 +124,21 @@
                             console.log(err);
                         })
                 }
+            function deleteGame(listItem){
+               //pegando o atribudo id 
+               var id = listItem.getAttribute('data-id');
+               // usando a rota delete o back-end
+
+               axios.delete("http://localhost:4002/games/"+id).then(response => {
+                   alert("Elemento removido com sucesso")
+               })
+               .catch(err => {
+                   console.log(err);
+               })
+            }
+
+
+
 
          // Fazendo requisição 
          axios.get("http://localhost:4002/games").then(response => {
@@ -160,6 +176,32 @@
                     // colocando o botão dentro do elemento da lista
                     item.appendChild(deleteBtn);
                     item.appendChild(editBtn);
+
+                    
+                    let item = document.createElement('li');
+
+
+                    item.setAttribute('data-id', game.id);
+                    item.setAttribute('data-title', game.title);
+                    item.setAttribute('data-year', game.year);
+                    item.setAttribute('data-price', game.price);
+
+                    item.innerHTML = game.id + " - " + game.title + "_ $" + game.price;
+
+                    let deleteBtn = document.createElement("button");
+                    deleteBtn.innerHTML = "Deletar";
+
+                    // colocando botão dentro do elemento da lista 
+                    item.appendChild(deleteBtn);
+
+                    //linknado o botão a funcao deletar 
+                    deleteBtn.addEventListener("click", function(){
+                        //parametro item que é o item da lista 
+                        deleteGame(item);
+                    })
+
+
+
                     list.appendChild(item);
                 })
 
